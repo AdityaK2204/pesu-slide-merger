@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Slide Merger for PESU Academy</title>
+  <style>
+    :root {
+      --blue: #0091cd; --ink: #173049; --muted: #5a6e7e; --line: #dde8f0; --bg: #ffffff; --soft: #f4f8fb;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root { --ink: #e6eef4; --muted: #9db0bf; --line: #2a3a47; --bg: #141c23; --soft: #1b252e; --blue: #33aee0; }
+    }
+    * { box-sizing: border-box; }
+    html { overflow-x: hidden; }
+    body { margin: 0; width: 320px; max-width: 100vw; overflow-x: hidden; background: var(--bg); color: var(--ink);
+      font: 13px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif; }
+    header { display: flex; align-items: center; gap: 10px; padding: 14px 16px 12px; border-bottom: 1px solid var(--line); }
+    header img { width: 28px; height: 28px; }
+    h1 { font-size: 14px; margin: 0; font-weight: 650; }
+    header p { margin: 0; color: var(--muted); font-size: 12px; }
+    section { padding: 12px 16px; }
+    h2 { font-size: 11px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); margin: 0 0 8px; font-weight: 650; }
+    ol { margin: 0; padding-left: 18px; }
+    ol li { margin: 3px 0; }
+    b { font-weight: 650; }
+    .opts { border-top: 1px solid var(--line); }
+    label { display: flex; gap: 10px; align-items: flex-start; padding: 7px 0; cursor: pointer; }
+    label input { margin: 2px 0 0; accent-color: var(--blue); width: 15px; height: 15px; flex: none; }
+    label small { display: block; color: var(--muted); font-size: 12px; }
+    footer { padding: 10px 16px 14px; border-top: 1px solid var(--line); color: var(--muted); font-size: 12px; background: var(--soft); }
+    a { color: var(--blue); }
+    .saved { color: var(--blue); font-size: 12px; min-height: 18px; margin: 2px 0 0; }
+    .credit { margin: 8px 0 0; padding-top: 8px; border-top: 1px solid var(--line); }
+    .credit b { color: var(--ink); }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="../icons/icon48.png" alt="">
+    <div>
+      <h1>Slide Merger for PESU Academy</h1>
+      <p>Slides or notes: one PDF per unit, in class order.</p>
+    </div>
+  </header>
+
+  <section>
+    <h2>How to use</h2>
+    <ol>
+      <li>Log in to <a href="https://www.pesuacademy.com/Academy/" target="_blank" rel="noopener">PESU Academy</a>.</li>
+      <li>Open <b>My Courses</b> and click a course.</li>
+      <li>Pick a unit tab, choose <b>Slides</b> or <b>Notes</b>, then click <b>Download Unit N…</b> just below the tabs.</li>
+    </ol>
+  </section>
+
+  <section class="opts">
+    <h2>Options</h2>
+    <label>
+      <input type="checkbox" id="convertOffice">
+      <span>Convert PowerPoint &amp; Word files to PDF<small>Uses a copy of LibreOffice built into the extension. Nothing is uploaded.</small></span>
+    </label>
+    <label>
+      <input type="checkbox" id="keepOriginals">
+      <span>Also keep the original PowerPoint / Word files<small>Saved next to the merged PDF.</small></span>
+    </label>
+    <label>
+      <input type="checkbox" id="titlePages">
+      <span>Add a title page before each class<small>Makes the class boundaries easy to spot while scrolling.</small></span>
+    </label>
+    <p class="saved" id="saved" aria-live="polite"></p>
+  </section>
+
+  <footer>
+    Files go to Downloads › PESU Slides › <i>course name</i>. Every class gets a bookmark in the merged PDF.
+    <p class="credit">Made by <b>Aditya Kalloli</b> · <a href="https://github.com/AdityaK2204/pesu-slide-merger" target="_blank" rel="noopener">Source &amp; privacy</a><br>Unofficial. Not affiliated with PES University.</p>
+  </footer>
+
+  <script src="popup.js"></script>
+</body>
+</html>

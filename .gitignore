@@ -1,0 +1,6 @@
+# Too big for git; fetched by `node tools/fetch-libreoffice.mjs`
+# (the ready-to-install zip on the Releases page already includes them)
+lo/soffice.wasm
+lo/soffice.data
+
+*.zip

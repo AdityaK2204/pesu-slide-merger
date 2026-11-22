@@ -1,0 +1,46 @@
+{
+  "manifest_version": 3,
+  "name": "Slide Merger for PESU Academy",
+  "short_name": "Slide Merger",
+  "version": "2.0.0",
+  "description": "Download a PESU Academy unit's slides or notes in one click: PowerPoint and Word converted, merged in class order into one PDF.",
+  "homepage_url": "https://github.com/AdityaK2204/pesu-slide-merger",
+  "minimum_chrome_version": "116",
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "action": {
+    "default_title": "Slide Merger for PESU Academy",
+    "default_popup": "popup/popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png"
+    }
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "permissions": ["downloads", "storage", "offscreen"],
+  "host_permissions": [
+    "https://www.pesuacademy.com/*",
+    "https://pesuacademy.com/*"
+  ],
+  "content_security_policy": {
+    "extension_pages": "script-src 'self' 'wasm-unsafe-eval'; object-src 'self'"
+  },
+  "cross_origin_embedder_policy": { "value": "require-corp" },
+  "cross_origin_opener_policy": { "value": "same-origin" },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.pesuacademy.com/Academy/*",
+        "https://pesuacademy.com/Academy/*"
+      ],
+      "js": ["lib/pdf-lib.min.js", "src/pesu.js", "src/convert.js", "src/merge.js", "src/content.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}
